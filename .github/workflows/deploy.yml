@@ -1,0 +1,31 @@
+name: Deploy
+on:
+  workflow_call:
+
+jobs:
+  deploy:
+    name: Deploy via SSH
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure SSH
+        env:
+          SSH_KEY: ${{ secrets.PRIVATE_KEY }}
+          KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
+          SSH_HOST: ${{ secrets.TARGET_HOST }}
+          SSH_USER: ${{ secrets.TARGET_USER }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          echo "$SSH_KEY" > ~/.ssh/deploy.key
+          chmod 600 ~/.ssh/deploy.key
+          cat >>~/.ssh/config <<END
+            Host puntapie_cloud
+              HostName $SSH_HOST
+              User $SSH_USER
+              IdentityFile ~/.ssh/deploy.key
+              StrictHostKeyChecking no
+          END
+      - name: Log in server and run script
+        run: |
+          ssh puntapie_cloud 'bash ~/puntapie/deployments/api-release/scripts/deploy_api.sh'

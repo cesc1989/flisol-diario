@@ -1,0 +1,23 @@
+name: Rails tests
+on: [push, pull_request]
+jobs:
+  rspec-tests:
+    name: RSpec
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.0
+          bundler-cache: true
+      - name: Prepare database
+        run: bundler exec rails db:prepare RAILS_ENV=test
+      - name: Run tests
+        run: bundler exec rspec
+
+  deploy:
+    name: Deploy
+    if: github.ref == 'refs/heads/main'
+    needs: [rspec-tests]
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
