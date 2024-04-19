@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :entries
+
   namespace 'api', default: { format: 'json' }, path: '/' do
     namespace :v1 do
     end

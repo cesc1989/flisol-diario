@@ -1,4 +1,4 @@
-# flisol_diario
+# FLISOL Baq Diario
 
 ## Getting Started
 
@@ -26,6 +26,8 @@ Run server with:
 ```bash
 $ foreman start
 ```
+
+Go to localhost:3005
 
 ### Tests
 
