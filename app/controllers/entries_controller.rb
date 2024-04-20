@@ -9,6 +9,7 @@ class EntriesController < ApplicationController
 
   def create
     @entry = Entry.new(entry_params)
+    @entry.content = 'hola mundo'
     @entry.user = current_user
 
     if @entry.save
@@ -21,6 +22,6 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:content)
+    params.require(:entry).permit(:content, :trix_content)
   end
 end

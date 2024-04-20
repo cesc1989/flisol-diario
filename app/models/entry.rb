@@ -1,7 +1,10 @@
 class Entry < ApplicationRecord
+  has_rich_text :trix_content
+
   belongs_to :user
 
-  validates :content, presence: true
+  # validates :content, presence: true
+  validates :trix_content, presence: true
 end
 
 # == Schema Information

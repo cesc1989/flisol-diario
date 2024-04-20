@@ -1,9 +1,11 @@
-<div class="row">
-  <% @entries.each do |entry| %>
-    <div class="col-12">
-      <p>
-        <%= entry.content %>
-      </p>
-    </div>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <% @entries.each do |entry| %>
+      <div class="col-12">
+        <p>
+          <%= entry.trix_content.to_plain_text.truncate(200) %>
+        </p>
+      </div>
+    <% end %>
+  </div>
 </div>
