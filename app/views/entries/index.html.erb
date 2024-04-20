@@ -1,1 +1,9 @@
-prueba
+<div class="row">
+  <% @entries.each do |entry| %>
+    <div class="col-12">
+      <p>
+        <%= entry.content %>
+      </p>
+    </div>
+  <% end %>
+</div>
