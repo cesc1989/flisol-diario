@@ -1,10 +1,25 @@
-<div class="container">
+<style>
+  .entry-card {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .entry-card:hover {
+    background-color: #f8f9fa;
+  }
+</style>
+
+<div class="container m-4">
   <div class="row">
     <% @entries.each do |entry| %>
       <div class="col-12">
-        <p>
-          <%= entry.trix_content.to_plain_text.truncate(200) %>
-        </p>
+        <div class="entry-card">
+          <p>
+            <%= entry.trix_content.to_plain_text.truncate(200) %>
+          </p>
+        </div>
       </div>
     <% end %>
   </div>
