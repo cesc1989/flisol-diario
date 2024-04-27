@@ -28,7 +28,7 @@ ln -fsv /home/ubuntu/flisol_diario/deployments/api-gems/bundle /home/ubuntu/flis
 # SYMLINK NVM node to /usr/local/bin/node
 #
 echo "$(date '+%F %T') Symlink NVM node to /usr/local/bin/node" >> /home/ubuntu/flisol_diario/deployment_logs/004_node_symlink.log 2>&1
-cat ~/.clave | sudo -S ln -sfv /home/ubuntu/.nvm/versions/node/v18.16.1/bin/node /usr/local/bin/node >> /home/ubuntu/flisol_diario/deployment_logs/004_node_symlink.log 2>&1
+cat ~/.clave | sudo -S ln -sfv /home/ubuntu/.nvm/versions/node/v20.12.2/bin/node /usr/local/bin/node >> /home/ubuntu/flisol_diario/deployment_logs/004_node_symlink.log 2>&1
 
 # COMPILE assets
 #
