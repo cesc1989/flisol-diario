@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :entries
+  has_many :entries, -> { order(created_at: :desc) }
 
   devise :database_authenticatable,
          :registerable,
